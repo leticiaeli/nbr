@@ -1326,16 +1326,16 @@ conf_sp_uh = read.csv('conf_sp_uh.csv')
 conf_sta_uh = read.csv('conf_sta_uh.csv')
 conf_co_uh = read.csv('conf_co_uh.csv')
 
-conf_mac_uh$cidade = 'Macapá'
+conf_mac_uh$cidade = 'MacapÃ¡'
 conf_rj_uh$cidade = 'Rio de Janeiro'
-conf_sp_uh$cidade = 'São Paulo'
+conf_sp_uh$cidade = 'SÃ£o Paulo'
 conf_sta_uh$cidade = 'Santa Maria'
 conf_co_uh$cidade = 'Curitiba'
 
 df = rbind(conf_mac_uh, conf_rj_uh, conf_sp_uh, conf_sta_uh, conf_co_uh)
-df$Tipo1[df$Tipo == "frio"] = 'Limite Inferior'
-df$Tipo1[df$Tipo == "calor"] = 'Limite Superior'
-df$Tipo1[df$Tipo == "conf"] = 'PHFT'
+df$Tipo1[df$Tipo == "frio"] = 'T \u2264 18 Â°C'
+df$Tipo1[df$Tipo == "calor"] = 'T \u2265 26Â°C (28)Â°C'
+df$Tipo1[df$Tipo == "conf"] = '18Â°C < T < 26Â°C (28)Â°C'
 
 df$caso_nome[df$CASO == "EXT"] = 'T. EXT.'
 df$caso_nome[df$CASO == "REF"] = 'REF.'
@@ -1345,7 +1345,7 @@ df$caso_nome[df$CASO == "Caso4"] = '3'
 df$caso_nome[df$CASO == "Caso5"] = '4'
 
 df$caso_nome = factor(df$caso_nome, levels=c("T. EXT.","REF.","1","2","3","4"))
-df$Tipo1 = factor(df$Tipo1, levels=c("Limite Superior", "Limite Inferior", "PHFT"))
+df$Tipo1 = factor(df$Tipo1, levels=c("T \u2265 26Â°C (28)Â°C", "T \u2264 18 Â°C", "18Â°C < T < 26Â°C (28)Â°C"))
 # df$CASO = factor(df$CASO, levels=c("R","Caso 1","Caso 2","Caso 3","Caso 4"))
 
 
@@ -1364,7 +1364,7 @@ library(ggplot2)
 #        labs(x=NULL,                                                    #MUDAR - Titulo do eixo x
 #             y="Percentual de Horas Ocupadas na Faixa de Temperatura Operativa (PHFT)",                                                                         #MUDAR - Titulo do eixo y
 #             title="Unidade habitacional"                                                                 #MUDAR - Titulo do grafico
-#             # subtitle="Ventilação variável"
+#             # subtitle="VentilaÃ§Ã£o variÃ¡vel"
 #             )+                                                              #MUDAR - Subtitulo do grafico
 #        scale_alpha_manual(values = c(0, 0, 1))+                                                               #Transparencia do texto - apenas PHOCT nao eh transparente
 #        scale_fill_manual("",                                                                                  #Titulo da legenda de cores - nao tem 
@@ -1400,9 +1400,9 @@ plot(ggplot(data=df, aes(x=caso_nome,y=PHFT, fill=Tipo1))+                      
                  position = position_stack(vjust = 0.5))+                                                     #Texto no meio da barra
        coord_cartesian(ylim=(0:100))+                                                                         #Limites do eixo y
        labs(x=NULL,                                                    #MUDAR - Titulo do eixo x
-            y="Percentual de Horas Ocupadas na Faixa\n de Temperatura Operativa (PHFT) - (%)",                                                                         #MUDAR - Titulo do eixo y
+            y="Percentual de Horas Ocupadas na Faixa\n de Temperatura Operativa - (%)",                                                                         #MUDAR - Titulo do eixo y
             title="Unidade habitacional"                                                                 #MUDAR - Titulo do grafico
-            # subtitle="Ventilação variável"
+            # subtitle="VentilaÃ§Ã£o variÃ¡vel"
        )+                                                              #MUDAR - Subtitulo do grafico
        scale_alpha_manual(values = c(0, 0, 1))+                                                               #Transparencia do texto - apenas PHOCT nao eh transparente
        scale_fill_manual("",                                                                                  #Titulo da legenda de cores - nao tem 
@@ -1441,7 +1441,7 @@ dev.off()
 #        labs(x=NULL,                                                    #MUDAR - Titulo do eixo x
 #             y="Percentual de Horas Ocupadas na Faixa de Temperatura Operativa (PHFT)",                                                                         #MUDAR - Titulo do eixo y
 #             title="Unidade Habitacional Unifamiliar"                                                                 #MUDAR - Titulo do grafico
-#             # subtitle="Ventilação variável"
+#             # subtitle="VentilaÃ§Ã£o variÃ¡vel"
 #        )+                                                              #MUDAR - Subtitulo do grafico
 #        scale_alpha_manual(values = c(0, 0, 1))+                                                               #Transparencia do texto - apenas PHOCT nao eh transparente
 #        scale_fill_manual("",                                                                                  #Titulo da legenda de cores - nao tem 
@@ -1474,9 +1474,9 @@ cgt_sp_uh = read.csv('cgt_sp_uh.csv')
 cgt_sta_uh = read.csv('cgt_sta_uh.csv')
 cgt_co_uh = read.csv('cgt_co_uh.csv')
 
-cgt_mac_uh$cidade = 'Macapá'
+cgt_mac_uh$cidade = 'MacapÃ¡'
 cgt_rj_uh$cidade = 'Rio de Janeiro'
-cgt_sp_uh$cidade = 'São Paulo'
+cgt_sp_uh$cidade = 'SÃ£o Paulo'
 cgt_sta_uh$cidade = 'Santa Maria'
 cgt_co_uh$cidade = 'Curitiba'
 
@@ -1488,11 +1488,11 @@ df$caso_nome[df$CASO == "Caso3"] = '2'
 df$caso_nome[df$CASO == "Caso4"] = '3'
 df$caso_nome[df$CASO == "Caso5"] = '4'
 
-df$Tipo1[df$Cgt == "cooling"] = "Refrigeração"
+df$Tipo1[df$Cgt == "cooling"] = "RefrigeraÃ§Ã£o"
 df$Tipo1[df$Cgt == "heating"] = "Aquecimento"
 
 df$caso_nome = factor(df$caso_nome, levels=c("REF.","1","2","3","4"))
-df$Tipo1 = factor(df$Tipo1, levels=c("Aquecimento","Refrigeração"))
+df$Tipo1 = factor(df$Tipo1, levels=c("Aquecimento","RefrigeraÃ§Ã£o"))
 
 # df$CASO1 = 'CASO'
 
@@ -1507,9 +1507,9 @@ df$Tipo1 = factor(df$Tipo1, levels=c("Aquecimento","Refrigeração"))
 #        #           position = position_stack(vjust = 0.5))+                                                     #Texto no meio da barra
 #        # coord_cartesian(ylim=(0:100))+                                                                         #Limites do eixo y
 #        labs(x=NULL,                                                    #MUDAR - Titulo do eixo x
-#             y="Carga Térmica de Refrigeração (kWh/ano)",                                                                         #MUDAR - Titulo do eixo y
+#             y="Carga TÃ©rmica de RefrigeraÃ§Ã£o (kWh/ano)",                                                                         #MUDAR - Titulo do eixo y
 #             title="Unidade Habitacional Unifamiliar"                                                                 #MUDAR - Titulo do grafico
-#             # subtitle="Ventilação variável"
+#             # subtitle="VentilaÃ§Ã£o variÃ¡vel"
 #        )+                                                              #MUDAR - Subtitulo do grafico
 #        scale_alpha_manual(values = c(0, 0, 1))+                                                               #Transparencia do texto - apenas PHOCT nao eh transparente
 #        # scale_color_manual("",                                                                                  #Titulo da legenda de cores - nao tem 
@@ -1545,9 +1545,9 @@ df$Tipo1 = factor(df$Tipo1, levels=c("Aquecimento","Refrigeração"))
 #        #           position = position_stack(vjust = 0.5))+                                                     #Texto no meio da barra
 #        coord_cartesian(ylim=(0:100))+                                                                         #Limites do eixo y
 #        labs(x=NULL,                                                    #MUDAR - Titulo do eixo x
-#             y="Carga Térmica de Refrigeração (kWh/ano)",                                                                         #MUDAR - Titulo do eixo y
+#             y="Carga TÃ©rmica de RefrigeraÃ§Ã£o (kWh/ano)",                                                                         #MUDAR - Titulo do eixo y
 #             title="Unidade habitacional"                                                                 #MUDAR - Titulo do grafico
-#             # subtitle="Ventilação variável"
+#             # subtitle="VentilaÃ§Ã£o variÃ¡vel"
 #        )+                                                              #MUDAR - Subtitulo do grafico
 #        scale_alpha_manual(values = c(0, 0, 1))+                                                               #Transparencia do texto - apenas PHOCT nao eh transparente
 #        scale_fill_manual("",                                                                                  #Titulo da legenda de cores - nao tem 
@@ -1584,9 +1584,9 @@ df$Tipo1 = factor(df$Tipo1, levels=c("Aquecimento","Refrigeração"))
 #                  position = position_stack(vjust = 0.5))+                                                     #Texto no meio da barra
 #        coord_cartesian(ylim=(0:100))+                                                                         #Limites do eixo y
 #        labs(x=NULL,                                                    #MUDAR - Titulo do eixo x
-#             y="Carga Térmica Anual na UH (kWh)",                                                                         #MUDAR - Titulo do eixo y
+#             y="Carga TÃ©rmica Anual na UH (kWh)",                                                                         #MUDAR - Titulo do eixo y
 #             title="Unidade habitacional"                                                                 #MUDAR - Titulo do grafico
-#             # subtitle="Ventilação variável"
+#             # subtitle="VentilaÃ§Ã£o variÃ¡vel"
 #        )+                                                              #MUDAR - Subtitulo do grafico
 #        scale_alpha_manual(values = c(0, 0, 1))+                                                               #Transparencia do texto - apenas PHOCT nao eh transparente
 #        scale_fill_manual("",                                                                                  #Titulo da legenda de cores - nao tem 
@@ -1620,9 +1620,9 @@ plot(ggplot(data=df, aes(x=caso_nome,y=Cgt_kwh, fill=Tipo1))+                   
        #           position = position_stack(vjust = 0.5))+                                                     #Texto no meio da barra
        # coord_cartesian(ylim=(0:100))+                                                                         #Limites do eixo y
        labs(x=NULL,                                                    #MUDAR - Titulo do eixo x
-            y="Carga Térmica Anual - (kWh)",                                                                         #MUDAR - Titulo do eixo y
+            y="Carga TÃ©rmica Anual - (kWh)",                                                                         #MUDAR - Titulo do eixo y
             title="Unidade habitacional"                                                                 #MUDAR - Titulo do grafico
-            # subtitle="Ventilação variável"
+            # subtitle="VentilaÃ§Ã£o variÃ¡vel"
        )+                                                              #MUDAR - Subtitulo do grafico
        scale_alpha_manual(values = c(0, 0, 1))+                                                               #Transparencia do texto - apenas PHOCT nao eh transparente
        scale_fill_manual("",                                                                                  #Titulo da legenda de cores - nao tem 
