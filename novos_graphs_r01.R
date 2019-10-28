@@ -1389,6 +1389,7 @@ library(ggplot2)
 # )
 # dev.off()
 
+options(OutDec=",")
 png(filename = 'PHFT_casos_r04.png',                                                             #MUDAR - Nome da figura 
     width = 33.8, height = 19, units = "cm", res = 500)                                                         #Dimensoes da figura
 plot(ggplot(data=df, aes(x=caso_nome,y=PHFT, fill=Tipo1))+                                            #MUDAR - Nome do dataframe e variaveis
@@ -1410,7 +1411,7 @@ plot(ggplot(data=df, aes(x=caso_nome,y=PHFT, fill=Tipo1))+                      
                                   "#A8DDFF",                                                             #Cor para Frio - azul
                                   "#96D5C0"))+                                                 #Nome dos itens da legenda                              
        # scale_x_discrete(labels=c("1,0","1,2", "1,5","1,8","2,0","2,2", "2,5", "2,8","3,0","3,2","3,5"))+  #MUDAR - texto dos itens do eixo x
-       # scale_y_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE))+                  #Adiciona divisao de milhar
+       scale_y_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE))+                  #Adiciona divisao de milhar
        guides(alpha=FALSE)+                                                                                   #Remove legenda para transparencias
        theme(legend.position= "bottom",                                                                        #Posicao da legenda
              legend.text = element_text(size=15),                                                             #Tamanho do texto da legenda
@@ -1609,6 +1610,7 @@ df$Tipo1 = factor(df$Tipo1, levels=c("Aquecimento","Refrigeração"))
 # )
 # dev.off()
 
+options(OutDec=",")
 png(filename = 'Cgt_casos_r04.png',                                                             #MUDAR - Nome da figura 
     width = 33.8, height = 19, units = "cm", res = 500)                                                         #Dimensoes da figura
 plot(ggplot(data=df, aes(x=caso_nome,y=Cgt_kwh, fill=Tipo1))+                                            #MUDAR - Nome do dataframe e variaveis
@@ -1629,7 +1631,7 @@ plot(ggplot(data=df, aes(x=caso_nome,y=Cgt_kwh, fill=Tipo1))+                   
                          values=c("#FF3333",                                                                  #Cor para Calor - vermelho
                                   "#6699FF"))+                                                 #Nome dos itens da legenda                              
        # scale_x_discrete(labels=c("1,0","1,2", "1,5","1,8","2,0","2,2", "2,5", "2,8","3,0","3,2","3,5"))+  #MUDAR - texto dos itens do eixo x
-       # scale_y_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE))+                  #Adiciona divisao de milhar
+       scale_y_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE))+                  #Adiciona divisao de milhar
        guides(alpha=FALSE)+                                                                                   #Remove legenda para transparencias
        theme(legend.position= "bottom",                                                                        #Posicao da legenda
              legend.text = element_text(size=15),                                                             #Tamanho do texto da legenda
