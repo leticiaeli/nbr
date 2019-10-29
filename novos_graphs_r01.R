@@ -245,7 +245,7 @@ for(d in caso){
   }
 }
 
-ref_mac_uh = data.frame(CASO = c('REF','Caso2','Caso3','Caso4','Caso5'), Cgt=rep(c('cooling','heating'),each=15),Cgt_kwh=c(1:1))
+ref_mac_uh = data.frame(CASO = c('REF','Caso2','Caso3','Caso4','Caso5'), Cgt=rep(c('cooling','heating'),each=5),Cgt_kwh=c(1:1))
 
 for(d in caso1){
   for(h in hvac){
@@ -509,7 +509,7 @@ for(d in caso){
   }
 }
 
-ref_rj_uh = data.frame(CASO = c('REF','Caso2','Caso3','Caso4','Caso5'), Cgt=rep(c('cooling','heating'),each=15),Cgt_kwh=c(1:1))
+ref_rj_uh = data.frame(CASO = c('REF','Caso2','Caso3','Caso4','Caso5'), Cgt=rep(c('cooling','heating'),each=5),Cgt_kwh=c(1:1))
 
 for(d in caso1){
   for(h in hvac){
@@ -771,7 +771,7 @@ for(d in caso){
   }
 }
 
-ref_co_uh = data.frame(CASO = c('REF','Caso2','Caso3','Caso4','Caso5'), Cgt=rep(c('cooling','heating'),each=15),Cgt_kwh=c(1:1))
+ref_co_uh = data.frame(CASO = c('REF','Caso2','Caso3','Caso4','Caso5'), Cgt=rep(c('cooling','heating'),each=5),Cgt_kwh=c(1:1))
 
 for(d in caso1){
   for(h in hvac){
@@ -1033,7 +1033,7 @@ for(d in caso){
   }
 }
 
-ref_sp_uh = data.frame(CASO = c('REF','Caso2','Caso3','Caso4','Caso5'), Cgt=rep(c('cooling','heating'),each=15),Cgt_kwh=c(1:1))
+ref_sp_uh = data.frame(CASO = c('REF','Caso2','Caso3','Caso4','Caso5'), Cgt=rep(c('cooling','heating'),each=5),Cgt_kwh=c(1:1))
 
 for(d in caso1){
   for(h in hvac){
@@ -1297,7 +1297,7 @@ for(d in caso){
   }
 }
 
-ref_sta_uh = data.frame(CASO = c('REF','Caso2','Caso3','Caso4','Caso5'), Cgt=rep(c('cooling','heating'),each=15),Cgt_kwh=c(1:1))
+ref_sta_uh = data.frame(CASO = c('REF','Caso2','Caso3','Caso4','Caso5'), Cgt=rep(c('cooling','heating'),each=5),Cgt_kwh=c(1:1))
 
 for(d in caso1){
   for(h in hvac){
